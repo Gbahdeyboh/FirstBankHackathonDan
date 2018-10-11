@@ -1,18 +1,25 @@
 {
-  "name": "css-grid",
+  "name": "firstbankhackathondan",
   "version": "1.0.0",
-  "description": "",
-  "main": "index.js",
+  "description": "This is a bot created at first bank innovative hackathon",
+  "main": "server.js",
   "scripts": {
-    "start": "run-script-os",
-    "start:win32": "browser-sync start --server --files '**/*.css, **/*.html, **/*.js, !node_modules/**/*' --directory --port 7777 --browser \"C:\\Program Files\\Chrome\\Chrome.exe\"",
-    "//": "Hello! If you are having trouble running this command. Try changing Firefox Developer Edition to FirefoxDeveloperEdition",
-    "start:darwin:linux": "browser-sync start --server --files '**/*.css, **/*.html, **/*.js, !node_modules/**/*' --directory --port 7777 --browser 'Chrome'"
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/Gbahdeyboh/FirstBankHackathonDan.git"
   },
   "author": "",
   "license": "ISC",
-  "devDependencies": {
-    "browser-sync": "^2.24.5",
-    "run-script-os": "^1.0.3"
+  "bugs": {
+    "url": "https://github.com/Gbahdeyboh/FirstBankHackathonDan/issues"
+  },
+  "homepage": "https://github.com/Gbahdeyboh/FirstBankHackathonDan#readme",
+  "dependencies": {
+    "express": "^4.16.4",
+    "prompt-sync": "^4.1.6",
+    "socket.io": "^2.1.1",
+    "watson-developer-cloud": "^3.12.0"
   }
 }

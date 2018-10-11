@@ -1,22 +1,22 @@
  <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="utf-8">
-  <title>Dan Assistant</title>
+  <meta charset="utf-8"> 
+  <title>Dan Assistant</title> 
   <meta name="description" content="A personalised chatBot for each first bank individual customer">
   <meta name="author" content="Ai6 Abeokuta" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0, minimum-scale=1.0, maximum-scale=1.0, user-scalable=no">
-  <link rel="stylesheet" media="screen" href="public/css/style.css">
-  <link rel="stylesheet" media="screen" href="public/css/materialize.min.css">
-  <link rel="stylesheet" media="screen" href="public/css/font-awesome.min.css">
-  <link rel="stylesheet" media="screen" href="public/css/icons/icon_set_1.css">
-  <link rel="stylesheet" media="screen" href="public/css/icons/icon_set_2.css">
-  <link rel="stylesheet" media="screen" href="public/css/Lato/latofonts.css">
-  <script type="text/javascript" language="javascript" src="public/js/fontawesome-all.js"></script>
-  <script type="text/javascript" language="javascript" src="public/js/jquery.min.js"></script>
-  <script type="text/javascript" language="javascript" src="public/js/materialize.min.js"></script>
-  <script type="text/javascript" language="javascript" src="public/js/main.js"></script>
-  <script type="text/javascript" language="javascript" src="public/js/chatBot.js"></script>
+  <link rel="stylesheet" media="screen" href="/static/css/style.css">
+  <link rel="stylesheet" media="screen" href="/static/css/materialize.min.css">
+  <link rel="stylesheet" media="screen" href="/static/css/font-awesome.min.css">
+  <link rel="stylesheet" media="screen" href="/static/css/icons/icon_set_1.css">
+  <link rel="stylesheet" media="screen" href="/static/css/icons/icon_set_2.css">
+  <link rel="stylesheet" media="screen" href="/static/css/Lato/latofonts.css">
+  <script type="text/javascript" language="javascript" src="/static/js/fontawesome-all.js"></script>
+  <script type="text/javascript" language="javascript" src="/static/js/jquery.min.js"></script>
+  <script type="text/javascript" language="javascript" src="/static/js/materialize.min.js"></script>
+  <script type="text/javascript" language="javascript" src="/static/js/main.js"></script>
+  <script type="text/javascript" language="javascript" src="/static/js/chatBot.js"></script>
 </head>
 <body>
 <!-- particles.js container -->
@@ -24,7 +24,7 @@
   <!--Page header-->
   <header class="z-depth-2">
     <div id="danBody">
-        <img id="botIcon" src="public/images/bot1.png" class=""><h3 id="dan">DAN</h3>
+        <img id="botIcon" src="/static/images/bot1.png" class=""><h3 id="dan">DAN</h3>
     </div>
   </header>
   <!--Page main body-->
@@ -61,16 +61,21 @@
         <div id="chatBody">
             <div class="row full">
                 <div class="col s10">
-                    <div class="botMessage z-depth-2">Hello dear</div>
+                    <div class="botMessage z-depth-2 animate oh">
+                    Hello
+                    </div>
                 </div>
-                <div class="col s2 timeStamp">10:69:78<br />AM</div>
+            <div class="col s2 timeStamp">7:25:30<br />pm</div>
             </div>
             <div class="row full">
                 <div class="col s10 right">
-                    <div class="botMessage z-depth-2">How are you?</div>
+                    <div class="botMessage z-depth-2 animate oh rightVal">
+                    Hello
+                    </div>
                 </div>
-                <div class="col s2 timeStamp">10:69:78<br />AM</div>
+            <div class="col s2 timeStamp">7:25:30<br />pm</div>
             </div>
+            
         </div>
         <div id="chatInput" class=" row">
             <div class="col s10 inp">
@@ -84,9 +89,21 @@
         </div>
     </div>
 </div>
+<!--Add to homecsreen prompt appears here-->
+<div class="white" id="homescreenAdd">
+    <div id="addScreenTitle" class=" z-depth-1">would you like to add DAN to you homescreen?</div>
+    <div id="addScreenBody" class="row">
+        <div class="col s6 m6 l6" id="yesBody">
+            <div class="btn waves-effect waves-light" id="yes">Yes</div>
+        </div>
+        <div class="col s6 m6 l6" id="noBody">
+            <div class="btn waves-effect waves-light" id="no">No</div>
+        </div>
+    </div>
+</div>
 <!-- scripts -->
-<script src="public/js/particles.js"></script>
-<script src="public/js/app.js"></script>
+<script src="/static/js/particles.js"></script>
+<script src="/static/js/app.js"></script>
 
 </body>
 </html>
