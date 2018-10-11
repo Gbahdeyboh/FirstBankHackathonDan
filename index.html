@@ -1,0 +1,92 @@
+ <!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <title>Dan Assistant</title>
+  <meta name="description" content="A personalised chatBot for each first bank individual customer">
+  <meta name="author" content="Ai6 Abeokuta" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, minimum-scale=1.0, maximum-scale=1.0, user-scalable=no">
+  <link rel="stylesheet" media="screen" href="public/css/style.css">
+  <link rel="stylesheet" media="screen" href="public/css/materialize.min.css">
+  <link rel="stylesheet" media="screen" href="public/css/font-awesome.min.css">
+  <link rel="stylesheet" media="screen" href="public/css/icons/icon_set_1.css">
+  <link rel="stylesheet" media="screen" href="public/css/icons/icon_set_2.css">
+  <link rel="stylesheet" media="screen" href="public/css/Lato/latofonts.css">
+  <script type="text/javascript" language="javascript" src="public/js/fontawesome-all.js"></script>
+  <script type="text/javascript" language="javascript" src="public/js/jquery.min.js"></script>
+  <script type="text/javascript" language="javascript" src="public/js/materialize.min.js"></script>
+  <script type="text/javascript" language="javascript" src="public/js/main.js"></script>
+  <script type="text/javascript" language="javascript" src="public/js/chatBot.js"></script>
+</head>
+<body>
+<!-- particles.js container -->
+<div id="particles-js">
+  <!--Page header-->
+  <header class="z-depth-2">
+    <div id="danBody">
+        <img id="botIcon" src="public/images/bot1.png" class=""><h3 id="dan">DAN</h3>
+    </div>
+  </header>
+  <!--Page main body-->
+  <div id="pageBody" class="valign-wrapper">
+    <h1>D<span id="a">A</span>N</h1>
+    <p id="aim">A personalized chatBot for every First Bank customer</p>
+  </div>
+  <!--Bot main body-->
+  <div id="botBody" class="row">
+    <div class="col m6 l6 botBodyDiv">
+      <!--Other things like maps are loaded here-->
+    </div>
+    <div class="col m6 l6 botBodyDiv">
+      <!--The bot itself appears here-->
+    </div>
+  </div>
+</div>
+<!--The bot icon-->
+<div id="botIconBody" class="z-depth-3" title="Start a chat with dan" onclick="openChat()">
+  <i class="icon_chat"></i>
+</div>
+<!--Chat bots body-->
+<div id="chatBotBody" class="z-depth-3">
+    <div id="chatBotBodyBody">
+        <div id="chatBotHead">
+            <div id="chatBotHeadText" class="row">
+                <div class="col s10">AI6 Abk Chatbot</div>
+                <div class="col s2" id="closeChatBody">
+                    <span id="closeChat" onclick="closeChat()">&times;</span>
+                </div>
+            </div>
+            <div id="chatBotStatus" class="">Online</div>
+        </div>
+        <div id="chatBody">
+            <div class="row full">
+                <div class="col s10">
+                    <div class="botMessage z-depth-2">Hello dear</div>
+                </div>
+                <div class="col s2 timeStamp">10:69:78<br />AM</div>
+            </div>
+            <div class="row full">
+                <div class="col s10 right">
+                    <div class="botMessage z-depth-2">How are you?</div>
+                </div>
+                <div class="col s2 timeStamp">10:69:78<br />AM</div>
+            </div>
+        </div>
+        <div id="chatInput" class=" row">
+            <div class="col s10 inp">
+                <div id="textBody">
+                    <input type="text" placeholder="What is your question?" class="browser-default" id="input"/>
+                </div>
+            </div>
+            <div class="col s2 inp">
+                <i class="fas fa-microphone" id="mic"></i>
+            </div>
+        </div>
+    </div>
+</div>
+<!-- scripts -->
+<script src="public/js/particles.js"></script>
+<script src="public/js/app.js"></script>
+
+</body>
+</html>
