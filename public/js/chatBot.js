@@ -1,5 +1,7 @@
 /* All scripts regarding how the bot interacts with the customer are written below*/
  //The below date object is used later in the code to get when each message was sent
+ var distances = [];
+var times = [];
  localStorage.setItem('username', 'user1')
  var dt = new Date(); 
  var hours = dt.getHours();     
@@ -251,8 +253,6 @@ document.addEventListener('DOMContentLoaded', function(){
                             }
                             ]
                             }
-                            var distances = [];
-                            var times = [];
                         for(i = 0; i < loc.locations.length; i++){
 var origin1 = new google.maps.LatLng(latitude, longitude);
 var origin2 = 'yaba, lagos';
@@ -282,13 +282,19 @@ function callback(response, status) {
     console.log(response);
     console.log(response.rows[0].elements[0].distance.text);
     console.log(response.rows[0].elements[0].duration.text);
-    distances.push(response.rows[0].elements[0].distance.text);
-    times.push(response.rows[0].elements[0].duration.text)
+    distances.push(response.rows[0].elements[0].distance.value);
+    times.push(response.rows[0].elements[0].duration.value);
   }
 }   
                         }
-                        var minDistance = Math.min.apply(null, distances);
-                        console.log("MinDistance is : ", minDistance);
+                        var dist = 0;
+                        for(j =0; j < distances.length; j++){
+                            if(distances[j] < (distances[j]+1)){
+
+                            }
+                        }
+                        console.log("minimum is : ", minimum);
+                        console.log("Distance is : ", distances);
                     }
                     setTimeout(function(){getLocation()}, 2000);
                 }
