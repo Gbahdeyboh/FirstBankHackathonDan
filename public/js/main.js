@@ -7,12 +7,12 @@ document.addEventListener('DOMContentLoaded', function(){
             console.log("Service Worker registered : ", worker);
         })
         .catch(err => {
-            console.error(err);
+            console.error(err); 
         });
-    }
+    } 
 }); 
 function openChat(){
-    //This function opens a new chat
+    //This function opens a new chat 
     const botBody = document.querySelector('#chatBotBody'); //the chat bot body
     botBody.style.display =  "block"; //show the bot body
     //wait for 500 milli seconds for animation to complete before proceeding
@@ -20,7 +20,15 @@ function openChat(){
         const botBodyBody = document.querySelector('#chatBotBodyBody');
         botBodyBody.style.display = "block";
     }, 500);
+    if (sessionStorage.getItem('start') !== 'started'){
+        var socket = io();
+        socket.emit('start', 'chat started');
+    }
+    sessionStorage.setItem('start', 'started'); //set session storage when chat starts
 } 
+window.addEventListener("load", function(){
+    sessionStorage.removeItem("start"); //remove session storage when page loads again
+});
 function closeChat(){
     //This function closes the chat Body
     const botBody = document.querySelector('#chatBotBody'); //the chat bot body
@@ -29,6 +37,23 @@ function closeChat(){
     botBodyBody.style.display = "block";
 }
 
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+/*
 //Add to home screen is triggerred here
 var installPromptEvent;
 
@@ -59,3 +84,4 @@ document.addEventListener('DOMContentLoaded', function(){
       });
   });
 });
+*/

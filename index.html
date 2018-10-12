@@ -2,9 +2,9 @@
 <html lang="en">
 <head>
   <meta charset="utf-8"> 
-  <title>Dan Assistant</title> 
+  <title>Dan Assistant</title>   
   <meta name="description" content="A personalised chatBot for each first bank individual customer">
-  <meta name="author" content="Ai6 Abeokuta" />
+  <meta name="author" content="Ai6 Abeokuta" /> 
   <meta name="viewport" content="width=device-width, initial-scale=1.0, minimum-scale=1.0, maximum-scale=1.0, user-scalable=no">
   <link rel="stylesheet" media="screen" href="/static/css/style.css">
   <link rel="stylesheet" media="screen" href="/static/css/materialize.min.css">
@@ -17,6 +17,8 @@
   <script type="text/javascript" language="javascript" src="/static/js/materialize.min.js"></script>
   <script type="text/javascript" language="javascript" src="/static/js/main.js"></script>
   <script type="text/javascript" language="javascript" src="/static/js/chatBot.js"></script>
+  <script async defer src="https://maps.googleapis.com/maps/api/js?key=AIzaSyCBKB0nPoDbeq0IVPfIw53f6PKC01lEUDo&callback=getLocation"></script>
+  <script src="/socket.io/socket.io.js"></script>
 </head>
 <body>
 <!-- particles.js container -->
@@ -59,14 +61,20 @@
             <div id="chatBotStatus" class="">Online</div>
         </div>
         <div id="chatBody">
+            <!--
             <div class="row full">
                 <div class="col s10">
                     <div class="botMessage z-depth-2 animate oh">
-                    Hello
+                    <div id="mapsBody">
+                        <div id="maptitle">Your Location</div>
+                        <div id="map"></div>
+                    </div>
                     </div>
                 </div>
             <div class="col s2 timeStamp">7:25:30<br />pm</div>
             </div>
+            -->
+            <!--
             <div class="row full">
                 <div class="col s10 right">
                     <div class="botMessage z-depth-2 animate oh rightVal">
@@ -75,6 +83,37 @@
                 </div>
             <div class="col s2 timeStamp">7:25:30<br />pm</div>
             </div>
+            -->
+            <!--
+            <div class="row full">
+                <div class="col s10">
+                    <div class="botMessage z-depth-2 animate oh">
+                    <div id="form" class="z-depth-2">
+                        <div id="title">Fullname</div>
+                        <div id="content">
+                            <input type="text" id="fullname" class="browser-default"/>
+                        </div>
+                        <div id="title">PhoneNumber</div>
+                        <div id="content">
+                            <input type="text" id="phoneNumber" class="browser-default"/>
+                        </div>
+                        <div id="title">Email</div>
+                        <div id="content">
+                            <input type="text" id="email" class="browser-default"/>
+                        </div>
+                        <div id="title">BVN</div>
+                        <div id="content">
+                            <input type="text" id="bvn" class="browser-default"/>
+                        </div>
+                        <div id="content">
+                            <div class="btn waves-effect" id="createAccount">Create</div>
+                        </div>
+                    </div>
+                    </div>
+                </div>
+            <div class="col s2 timeStamp">7:25:30<br />pm</div>
+            </div>
+            -->
             
         </div>
         <div id="chatInput" class=" row">
@@ -103,7 +142,6 @@
 </div>
 <!-- scripts -->
 <script src="/static/js/particles.js"></script>
-<script src="/static/js/app.js"></script>
 
 </body>
 </html>
