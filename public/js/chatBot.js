@@ -293,7 +293,7 @@ function callback(response, status) {
                     setTimeout(function(){getLocation()}, 2000);
                 }
                 else{
-                    console.log("PERFORM A TASK");
+                    receiveMessage(message);
                 }
             }
         }
