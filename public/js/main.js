@@ -4,11 +4,11 @@ document.addEventListener('DOMContentLoaded', function(){
     if('serviceWorker' in navigator){
         navigator.serviceWorker.register('../../sw.js')
         .then(worker => {
-            console.log("Service Worker registered : ", worker);
+            console.log("Service Worker registered : ", worker)
         })
         .catch(err => {
             console.error(err); 
-        });
+        })
     } 
 }); 
 function openChat(){

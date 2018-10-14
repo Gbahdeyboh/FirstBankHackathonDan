@@ -70,8 +70,8 @@ function processResponse(err, response) {
         }
 
 
-http.listen(process.env.PORT || 8080, function(){
-  console.log('listening on *:3008');
+http.listen(process.env.PORT || 8081, function(){
+  console.log('listening on *:8081');
 });
 
 io.on('connect', function(socket){

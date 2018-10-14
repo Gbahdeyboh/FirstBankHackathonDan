@@ -1,8 +1,89 @@
 /* All scripts regarding how the bot interacts with the customer are written below*/
- //The below date object is used later in the code to get when each message was sent
- var distances = [];
-var times = [];
- localStorage.setItem('username', 'user1')
+var distances = [];
+var distanceText = [];
+var duration = [];
+//The below is the location is terms of latitudes and longitudes of first bank branches in lagos
+var loc = {
+    locations : [
+    {
+    "branch" : "Ibidun St, Surulere, Lagos",
+    "longitude" : "6.5055172",
+    "latitude" : "3.3647663"
+    },
+    {
+    "branch" : "Aje Road Street, Off Herbert Macaulay Way, Yaba, Sabo yaba, Lagos",
+    "longitude" : "6.5058742",
+    "latitude" : "3.3709784"
+    },
+    {
+    "branch" : "128 Murtala Muhammed Way, Ebute-Metta, Lagos",
+    "longitude" : "6.5068789",
+    "latitude" : "3.3716704"
+    },
+    {
+    "branch" : "Commercial Avenue, 32 Tejuosho Road, Oshodi, Yaba, Lagos",
+    "longitude" : "6.5070811",
+    "latitude" : "3.3693996"
+    },
+    {
+    "branch" : "17 Itire Rd, Surulere, Lagos",
+    "longitude" : "6.5116223",
+    "latitude" : "3.3594012"
+    },
+    {
+    "branch" : "Daleko Market, Bank Road, Mushin, Surulere 100272, Lagos",
+    "longitude" : "6.5032993",
+    "latitude" : "3.3551691"
+    },
+    {
+    "branch" : "23 Commercial Ave, Sabo yaba, Lagos",
+    "longitude" : "6.5067255",
+    "latitude" : "3.3684149"
+    },
+    {
+    "branch" : "10 Alakija St, Igbobi 100272, Lagos",
+    "longitude" : "6.5100934",
+    "latitude" : "3.3561183"
+    },
+    {
+    "branch" : "59 Lawanson Street, Surulere 100272, Lagos",
+    "longitude" : "6.5209672",
+    "latitude" : "3.3707877"
+    },
+    {
+    "branch" : "84 Adeniran Ogunsanya St, Surulere, Lagos",
+    "longitude" : "6.4913425",
+    "latitude" : "3.3561224"
+    },
+    {
+    "branch" : "Oko Oba, Agege, 254 Agege Motor Rd, Fadeyi, Lagos",
+    "longitude" : "6.527014",
+    "latitude" : "3.3507817"
+    },
+    {
+    "branch" : "322 Herbert Macaulay Way, Alagomeji-Yaba, Lagos",
+    "longitude" : "6.498745",
+    "latitude" : "3.3743961"
+    },
+    {
+    "branch" : "Lagos State Polytechnic Isolo Campus, Iyana Isolo, Abule ijesha 100272, Lagos",
+    "longitude" : "6.5243793",
+    "latitude" : "3.3748283"
+    },
+    {
+    "branch" : "Iwaya Rd, Iwaya, Lagos",
+    "longitude" : "6.5072184",
+    "latitude" : "3.3834065"
+    },
+    {
+    "branch" : "Oju Elegba Rd, Ikate, Lagos",
+    "longitude" : "6.5115995",
+    "latitude" : "33.3381629"
+    }
+    ]
+    }
+//The below date object is used later in the code to get when each message was sent
+ localStorage.setItem('username', 'user1') 
  var dt = new Date(); 
  var hours = dt.getHours();     
  var minutes = dt.getMinutes();
@@ -167,134 +248,55 @@ document.addEventListener('DOMContentLoaded', function(){
                     </div>
                     `
                           receiveMessage(mapMessage);
-                            // The location of IC mikro Labs
+                          //show the map of the current location of the customer
+                            showMap(latitude, longitude, document.getElementById('map'));
+                          /*
+                            // The present location of the customer
                           var hic = {lat: latitude, lng: longitude};
-                          // The map, centered at hic
+                          // The map, centerered at this location
                           var map = new google.maps.Map(
                               document.getElementById('map'), {zoom: 15, center: hic});
-                          // The marker, positioned at hic
+                          // The marker, positioned at this location
                           var marker = new google.maps.Marker({position: hic, map: map});
+                          */                          
 
-                          var loc = {locations : [
-                            {
-                            "branch" : "Ibidun St, Surulere, Lagos",
-                            "longitude" : "6.5055172",
-                            "latitude" : "3.3647663"
-                            },
-                            {
-                            "branch" : "Aje Road Street, Off Herbert Macaulay Way, Yaba, Sabo yaba, Lagos",
-                            "longitude" : "6.5058742",
-                            "latitude" : "3.3709784"
-                            },
-                            {
-                            "branch" : "128 Murtala Muhammed Way, Ebute-Metta 100272, Lagos",
-                            "longitude" : "6.5068789",
-                            "latitude" : "3.3716704"
-                            },
-                            {
-                            "branch" : "Commercial Avenue, 32 Tejuosho Road, Oshodi, Yaba, Lagos",
-                            "longitude" : "6.5070811",
-                            "latitude" : "3.3693996"
-                            },
-                            {
-                            "branch" : "17 Itire Rd, Surulere, Lagos",
-                            "longitude" : "6.5116223",
-                            "latitude" : "3.3594012"
-                            },
-                            {
-                            "branch" : "Daleko Market, Bank Road, Mushin, Surulere 100272, Lagos",
-                            "longitude" : "6.5032993",
-                            "latitude" : "3.3551691"
-                            },
-                            {
-                            "branch" : "23 Commercial Ave, Sabo yaba, Lagos",
-                            "longitude" : "6.5067255",
-                            "latitude" : "3.3684149"
-                            },
-                            {
-                            "branch" : "10 Alakija St, Igbobi 100272, Lagos",
-                            "longitude" : "6.5100934",
-                            "latitude" : "3.3561183"
-                            },
-                            {
-                            "branch" : "59 Lawanson Street, Surulere 100272, Lagos",
-                            "longitude" : "6.5209672",
-                            "latitude" : "3.3707877"
-                            },
-                            {
-                            "branch" : "84 Adeniran Ogunsanya St, Surulere, Lagos",
-                            "longitude" : "6.4913425",
-                            "latitude" : "3.3561224"
-                            },
-                            {
-                            "branch" : "Oko Oba, Agege, 254 Agege Motor Rd, Fadeyi, Lagos",
-                            "longitude" : "6.527014",
-                            "latitude" : "3.3507817"
-                            },
-                            {
-                            "branch" : "322 Herbert Macaulay Way, Alagomeji-Yaba, Lagos",
-                            "longitude" : "6.498745",
-                            "latitude" : "3.3743961"
-                            },
-                            {
-                            "branch" : "Lagos State Polytechnic Isolo Campus, Iyana Isolo, Abule ijesha 100272, Lagos",
-                            "longitude" : "6.5243793",
-                            "latitude" : "3.3748283"
-                            },
-                            {
-                            "branch" : "Iwaya Rd, Iwaya, Lagos",
-                            "longitude" : "6.5072184",
-                            "latitude" : "3.3834065"
-                            },
-                            {
-                            "branch" : "Oju Elegba Rd, Ikate, Lagos",
-                            "longitude" : "6.5115995",
-                            "latitude" : "33.3381629"
-                            }
-                            ]
-                            }
                         for(i = 0; i < loc.locations.length; i++){
-var origin1 = new google.maps.LatLng(latitude, longitude);
-var origin2 = 'yaba, lagos';
-var destinationA = loc.locations[i].branch;
-var destinationB = new google.maps.LatLng(loc.locations[i].latitude, loc.locations[i].latitude);
-
-var service = new google.maps.DistanceMatrixService();
-service.getDistanceMatrix(
-  {
-    origins: [origin1, origin2],
-    destinations: [destinationA, destinationB],
-    travelMode: 'DRIVING',
-    drivingOptions: {
-    departureTime: new Date(Date.now() + 2000),  // for the time N milliseconds from now.
-    trafficModel: 'optimistic'
-  },
-    unitSystem: google.maps.UnitSystem.METRIC,
-    avoidHighways: true,
-    avoidTolls: true,
-  }, callback);
-
-function callback(response, status) {
-  if (status == 'OK') {
-    var origins = response.originAddresses;
-    var destinations = response.destinationAddresses;
-
-    console.log(response);
-    console.log(response.rows[0].elements[0].distance.text);
-    console.log(response.rows[0].elements[0].duration.text);
-    distances.push(response.rows[0].elements[0].distance.value);
-    times.push(response.rows[0].elements[0].duration.value);
-  }
-}   
-                        }
-                        var dist = 0;
-                        for(j =0; j < distances.length; j++){
-                            if(distances[j] < (distances[j]+1)){
-
+                            var origin1 = new google.maps.LatLng(latitude, longitude);
+                            var origin2 = 'lagos';
+                            var destinationA = loc.locations[i].branch;
+                            var destinationB = new google.maps.LatLng(loc.locations[i].latitude, loc.locations[i].latitude);
+                            
+                            var service = new google.maps.DistanceMatrixService();
+                            service.getDistanceMatrix(
+                              {
+                                origins: [origin1, origin2],
+                                destinations: [destinationA, destinationB],
+                                travelMode: 'DRIVING',
+                                drivingOptions: {
+                                departureTime: new Date(Date.now() + 2000),  // for the time N milliseconds from now.
+                                trafficModel: 'optimistic'
+                              },
+                                unitSystem: google.maps.UnitSystem.METRIC,
+                                avoidHighways: true,
+                                avoidTolls: true,
+                              }, callback);
+                            
+                            function callback(response, status) {
+                              if (status == 'OK') {
+                                var origins = response.originAddresses;
+                                var destinations = response.destinationAddresses;
+                            
+                                console.log(response);
+                                console.log(response.rows[0].elements[0].distance.text);
+                                console.log(response.rows[0].elements[0].duration.text);
+                                pushDistance(response.rows[0].elements[0].distance.value, loc.locations.length);
+                                pushDuration(response.rows[0].elements[0].duration.text, loc.locations.length);
+                                pushDistanceText(response.rows[0].elements[0].distance.text, loc.locations.length);
+                                //distances.push(response.rows[0].elements[0].distance.value);
+                                //times.push(response.rows[0].elements[0].duration.value);
+                              }
                             }
                         }
-                        console.log("minimum is : ", minimum);
-                        console.log("Distance is : ", distances);
                     }
                     setTimeout(function(){getLocation()}, 2000);
                 }
@@ -328,4 +330,72 @@ function getVal(){
 }
 function setStorage(input, name){
     sessionStorage.setItem(name, input);
+}
+
+
+function pushDistance(val, len){
+    distances.push(val);
+    if(distances.length == len){ //when all distances has been pushed
+        setTimeout(function(){getMin(distances)}, 5000); //get the minimum distance
+    }
+}
+
+function pushDuration(val, len){
+    duration.push(val);
+}
+
+function pushDistanceText(val, len){
+    distanceText.push(val);
+}
+
+function getMin(arr){
+    Array.min = function( arr ){
+        return Math.min.apply( Math, arr );
+    };
+    var minimum = Array.min(arr); //The minimum distance of a first banl from here
+    var minIndex = distances.indexOf(minimum); //Get the index of the minimum index form the array
+    //Use the idex to find the longitude and latitude of the nearest first bank
+    const address = loc.locations[minIndex].branch;
+    const longitude = loc.locations[minIndex].longitude;
+    const latitude = loc.locations[minIndex].latitude;
+    //show the map showing the location of the nearest first bank to the customer
+    message = `
+    <div id="mapsBody">
+        <div id="maptitle">Nearest FirstBank</div>
+        <div>${address}</div>
+        <div id="map2"></div>
+    </div>
+    `;
+    receiveMessage(message);
+    //showMap(latitude, longitude, document.querySelector('#map2'));
+
+    setTimeout(function(){
+        // The present location of the customer
+    var hic = {lat: latitude, lng: longitude};
+    // The map, centerered at this location
+    var map = new google.maps.Map(document.querySelector('#map2'), {zoom: 15, center: hic});
+    // The marker, positioned at this location
+    var marker = new google.maps.Marker({position: hic, map: map});
+    }, 3000);
+
+
+    //Get the time taken to reach this distance
+    const timeTaken = duration[minIndex];
+    const message2 = `
+    You are about ${distanceText[minIndex]} from the nearest first bank, and it is located at ${address}. 
+    It would take approximately ${timeTaken} to get there if you drive and {x time if you walk.}
+    `;
+    receiveMessage(message2);
+    console.log(minIndex);
+    console.log("The distances are : ", distances);
+    console.log("The minimum distance is : ", minimum);
+}
+function showMap(latitude, longitude, element){
+      // The present location of the customer
+      var hic = {lat: latitude, lng: longitude};
+      // The map, centerered at this location
+      var map = new google.maps.Map(element, {zoom: 15, center: hic});
+      // The marker, positioned at this location
+      var marker = new google.maps.Marker({position: hic, map: map});
+      return;
 }
