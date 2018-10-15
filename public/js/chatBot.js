@@ -31,7 +31,7 @@ var loc = {
     "latitude" : "3.3594012"
     },
     {
-    "branch" : "Daleko Market, Bank Road, Mushin, Surulere 100272, Lagos",
+    "branch" : "Daleko Market, Bank Road, Mushin, Surulere, Lagos",
     "longitude" : "6.5032993",
     "latitude" : "3.3551691"
     },
@@ -41,12 +41,12 @@ var loc = {
     "latitude" : "3.3684149"
     },
     {
-    "branch" : "10 Alakija St, Igbobi 100272, Lagos",
+    "branch" : "10 Alakija St, Igbobi, Lagos",
     "longitude" : "6.5100934",
     "latitude" : "3.3561183"
     },
     {
-    "branch" : "59 Lawanson Street, Surulere 100272, Lagos",
+    "branch" : "59 Lawanson Street, Surulere, Lagos",
     "longitude" : "6.5209672",
     "latitude" : "3.3707877"
     },
@@ -66,7 +66,7 @@ var loc = {
     "latitude" : "3.3743961"
     },
     {
-    "branch" : "Lagos State Polytechnic Isolo Campus, Iyana Isolo, Abule ijesha 100272, Lagos",
+    "branch" : "Lagos State Polytechnic Isolo Campus, Iyana Isolo, Abule ijesha, Lagos",
     "longitude" : "6.5243793",
     "latitude" : "3.3748283"
     },
@@ -300,6 +300,12 @@ document.addEventListener('DOMContentLoaded', function(){
                     }
                     setTimeout(function(){getLocation()}, 2000);
                 }
+                else if (intent.intent == "Banking_Transfer_Money"){
+                    const message = `I understand that you want to make a <b>TRANSFER</b> but unfortunately, 
+                    i am still a working prototype and i am not connected to the bank's database yet. Very soon, 
+                    i'll be able to make transfers for you. THANKS.`
+                    receiveMessage(message);
+                }
                 else{
                     receiveMessage(message);
                 }
@@ -356,8 +362,14 @@ function getMin(arr){
     var minIndex = distances.indexOf(minimum); //Get the index of the minimum index form the array
     //Use the idex to find the longitude and latitude of the nearest first bank
     const address = loc.locations[minIndex].branch;
-    const longitude = loc.locations[minIndex].longitude;
-    const latitude = loc.locations[minIndex].latitude;
+    const longitude = parseFloat(loc.locations[minIndex].longitude);
+    const latitude = parseFloat(loc.locations[minIndex].latitude);
+
+    console.log("longitude is : ", longitude);
+    console.log("latitude is : ", latitude);
+    console.log("latitude type is : ", typeof(latitude));
+    console.log("longitude type is : ", typeof(longitude));
+    //Store co ordinates in sessionStorages
     //show the map showing the location of the nearest first bank to the customer
     message = `
     <div id="mapsBody">
@@ -368,15 +380,6 @@ function getMin(arr){
     `;
     receiveMessage(message);
     //showMap(latitude, longitude, document.querySelector('#map2'));
-
-    setTimeout(function(){
-        // The present location of the customer
-    var hic = {lat: latitude, lng: longitude};
-    // The map, centerered at this location
-    var map = new google.maps.Map(document.querySelector('#map2'), {zoom: 15, center: hic});
-    // The marker, positioned at this location
-    var marker = new google.maps.Marker({position: hic, map: map});
-    }, 3000);
 
 
     //Get the time taken to reach this distance
@@ -389,6 +392,15 @@ function getMin(arr){
     console.log(minIndex);
     console.log("The distances are : ", distances);
     console.log("The minimum distance is : ", minimum);
+    function getLocation2(){
+        // The present location of the customer
+      var hic = {lat: latitude, lng: longitude};
+      // The map, centerered at this location
+      var map = new google.maps.Map(document.querySelector("#map2"), {zoom: 5, center: hic});
+      // The marker, positioned at this location
+      var marker = new google.maps.Marker({position: hic, map: map});
+    }
+    getLocation2();
 }
 function showMap(latitude, longitude, element){
       // The present location of the customer
