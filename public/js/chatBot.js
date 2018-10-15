@@ -401,7 +401,7 @@ function getMin(arr){
         // The present location of the customer
       var hic = {lat: longitude, lng: latitude};
       // The map, centerered at this location
-      var map = new google.maps.Map(document.querySelector("#map2"), {zoom: 18, center: hic});
+      var map = new google.maps.Map(document.querySelector("#map2"), {zoom: 17, center: hic});
       // The marker, positioned at this location
       var marker = new google.maps.Marker({position: hic, map: map});
     }
@@ -409,6 +409,27 @@ function getMin(arr){
     setTimeout(function(){
         const msg = "Would you like a ride? If yes, you could book on now below";
         receiveMessage(msg);
+        const msg2 = `
+        <div class="row full">
+                <div class="col s10 right">
+                    <div class="row" class="optionsBody">
+                        <div class="col s6 m6 l6 options">
+                        <a href="https://www.uber.com/en-NG/cities/lagos/" target="_blank">
+                        <img src="../images/uber.jpg" class="option" alt="UBER"/>
+                        </a>
+                        </div>
+                        <div class="col s6 m6 l6 options">
+                        <a href="https://taxify.eu/en-ng/cities/lagos/" target="_blank">
+                        <img src="../images/Taxify2.png" class="option" alt="TAXIFY"/>
+                        </a>
+                        </div>
+                    </div>
+                </div>
+            <div class="col s2 timeStamp">7:25:30<br />pm</div>
+            </div>
+        `;
+        const chatBody = document.querySelector('#chatBody');
+        chatBody.innerHTML += msg2;
     }, 5000);
 
 }
