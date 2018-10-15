@@ -394,9 +394,9 @@ function getMin(arr){
     console.log("The minimum distance is : ", minimum);
     function getLocation2(){
         // The present location of the customer
-      var hic = {lat: latitude, lng: longitude};
+      var hic = {lat: longitude, lng: latitude};
       // The map, centerered at this location
-      var map = new google.maps.Map(document.querySelector("#map2"), {zoom: 5, center: hic});
+      var map = new google.maps.Map(document.querySelector("#map2"), {zoom: 20, center: hic});
       // The marker, positioned at this location
       var marker = new google.maps.Marker({position: hic, map: map});
     }
@@ -406,7 +406,7 @@ function showMap(latitude, longitude, element){
       // The present location of the customer
       var hic = {lat: latitude, lng: longitude};
       // The map, centerered at this location
-      var map = new google.maps.Map(element, {zoom: 15, center: hic});
+      var map = new google.maps.Map(element, {zoom: 18, center: hic});
       // The marker, positioned at this location
       var marker = new google.maps.Marker({position: hic, map: map});
       return;
