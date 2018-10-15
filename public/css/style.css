@@ -267,6 +267,16 @@ outline: 1px solid slategrey;
   margin-bottom: .5em;
   overflow-wrap: break-word;
 }
+.botOptions{
+  background: lightgrey;
+  height: auto;
+  max-width: 100px;
+  padding: 1em;
+  font-size: 14px;
+  border-radius: 15px;
+  margin-bottom: .5em;
+  overflow-wrap: break-word;
+}
 .oh{
   background: lightgrey!important;
 }
@@ -411,4 +421,22 @@ outline: 1px solid slategrey;
   width: 100%;
   height: 300px;
   background: white;
+}
+.optionsBody{
+  height: 50px;
+}
+.options{
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 60px;
+}
+.option{
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 120px;
+  height: 100%;
+  background: lightgrey;
+  border-radius: 80px;
 }

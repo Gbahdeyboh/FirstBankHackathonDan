@@ -79,6 +79,11 @@ var loc = {
     "branch" : "Oju Elegba Rd, Ikate, Lagos",
     "longitude" : "6.5115995",
     "latitude" : "33.3381629"
+    },
+    {
+    "branch" : "111 Iju Rd, Ifako-Ijaiye, Lagos",
+    "longitude" : "6.6553644",
+    "latitude" : "3.3206733"
     }
     ]
     }
@@ -264,7 +269,7 @@ document.addEventListener('DOMContentLoaded', function(){
                             var origin1 = new google.maps.LatLng(latitude, longitude);
                             var origin2 = 'lagos';
                             var destinationA = loc.locations[i].branch;
-                            var destinationB = new google.maps.LatLng(loc.locations[i].latitude, loc.locations[i].latitude);
+                            var destinationB = new google.maps.LatLng(loc.locations[i].longitude, loc.locations[i].latitude);
                             
                             var service = new google.maps.DistanceMatrixService();
                             service.getDistanceMatrix(
@@ -298,7 +303,7 @@ document.addEventListener('DOMContentLoaded', function(){
                             }
                         }
                     }
-                    setTimeout(function(){getLocation()}, 2000);
+                    setTimeout(function(){getLocation()}, 1000);
                 }
                 else if (intent.intent == "Banking_Transfer_Money"){
                     const message = `I understand that you want to make a <b>TRANSFER</b> but unfortunately, 
@@ -342,7 +347,7 @@ function setStorage(input, name){
 function pushDistance(val, len){
     distances.push(val);
     if(distances.length == len){ //when all distances has been pushed
-        setTimeout(function(){getMin(distances)}, 5000); //get the minimum distance
+        setTimeout(function(){getMin(distances)}, 1000); //get the minimum distance
     }
 }
 
@@ -396,11 +401,16 @@ function getMin(arr){
         // The present location of the customer
       var hic = {lat: longitude, lng: latitude};
       // The map, centerered at this location
-      var map = new google.maps.Map(document.querySelector("#map2"), {zoom: 20, center: hic});
+      var map = new google.maps.Map(document.querySelector("#map2"), {zoom: 18, center: hic});
       // The marker, positioned at this location
       var marker = new google.maps.Marker({position: hic, map: map});
     }
     getLocation2();
+    setTimeout(function(){
+        const msg = "Would you like a ride? If yes, you could book on now below";
+        receiveMessage(msg);
+    }, 5000);
+
 }
 function showMap(latitude, longitude, element){
       // The present location of the customer
